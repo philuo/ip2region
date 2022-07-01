@@ -1,12 +1,13 @@
 {
   "name": "@yuo/ip2region",
-  "version": "1.0.0",
-  "author": "Perfumere<1061393710@qq.com>",
+  "version": "1.0.2",
+  "author": "Perfumere <1061393710@qq.com>",
   "description": "@yuo/ip2region",
   "main": "index.js",
   "scripts": {
     "build": "java -jar maker.jar -src src/ip.txt -region src/region.csv",
-    "test": "esno tests"
+    "build_city": "java -jar maker.jar -src src/ip.city.txt -region src/region.csv",
+    "test": "tsx tests"
   },
   "files": [
     "data/"
@@ -27,7 +28,8 @@
     "node": ">=12.0.0"
   },
   "devDependencies": {
-    "esno": "^0.16.3"
+    "object-sizeof": "^1.6.3",
+    "tsx": "^3.6.0"
   },
   "publishConfig": {
     "access": "public"

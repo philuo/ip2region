@@ -6,7 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 const DB_PATH  = path.join(__dirname,'./data/ip2region.db') ;
-const CITYCODE_PATH  = path.join(__dirname,'./data/citycode.json') ;
+const CITYCODE_PATH  = path.join(__dirname,'./data/citycode.ts') ;
 
 const IP_BASE = [16777216, 65536, 256, 1];
 const INDEX_BLOCK_LENGTH = 12;
@@ -150,24 +150,37 @@ class IPReaderCtor {
     }
 }
 
-const citys = JSON.parse(fs.readFileSync(CITYCODE_PATH, 'utf-8'));
+const citys = require(CITYCODE_PATH);
 const reader = new IPReaderCtor();
+const ERROR_MATCH = Object.freeze({
+    pid: '0',
+    cid: '0',
+    province: '',
+    city: '',
+    ips: ''
+});
 
 /**
  * 传入IP, 获取地区
- * @param {string} ip 
+ * @param {string} ip
  */
 module.exports = function IpReader(ip) {
-    const [
-        province,
-        city,
-        ips
-    ] = (reader.get(ip) || '').split('|');;
+    if (!reader.get(ip)) {
+        return ERROR_MATCH;
+    }
+
+    const [pid, cid, ips] = reader.get(ip).split('|');
+
+    if (+pid === 0 || !citys[pid].l) {
+        return ERROR_MATCH;
+    }
 
     return {
-        cid: citys[province] || 0,
-        province,
-        city,
+        pid: +pid,
+        cid: +cid,
+        zone: citys[pid].z,
+        province: citys[pid].n,
+        city: citys[pid].l[cid],
         ips
     };
 };
