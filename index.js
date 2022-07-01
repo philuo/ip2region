@@ -153,8 +153,9 @@ class IPReaderCtor {
 const citys = require(CITYCODE_PATH);
 const reader = new IPReaderCtor();
 const ERROR_MATCH = Object.freeze({
-    pid: '0',
-    cid: '0',
+    pid: 0,
+    cid: 0,
+    zone: '',
     province: '',
     city: '',
     ips: ''

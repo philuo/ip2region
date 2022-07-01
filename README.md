@@ -1,13 +1,15 @@
 # @yuo/ip2region
 
+> [区域编号对应文档](https://philuo-int.feishu.cn/wiki/wikcnJCm066Jh4nxYRfdi2joPYb)
+
 ## 特点简介
 
-- 📚 仅ipv4, 精确匹配国内省市区 > 99.999%
+- 📚 仅ipv4, 精确匹配国内省市区, 作者不提供ip数据源, 仅作为技术学习参考使用。
 - ⚡️ `50w~80w` *qps*, $10^{-6}$ 秒级查询
 - 🍉 3.9MB, 短小精悍
 - ⛑ 内存数据库, 安全高并发
 
-## 继续完善
+## 数据源测试参考
 
 [每隔一段时间, 会有更新](http://ips.chacuo.net/view/s_HI)
 [城市IP段落](https://ip.bczs.net/city)

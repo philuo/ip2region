@@ -1,6 +1,6 @@
 {
   "name": "@yuo/ip2region",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Perfumere <1061393710@qq.com>",
   "description": "@yuo/ip2region",
   "main": "index.js",
